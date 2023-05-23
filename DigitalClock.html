@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 98vh;
+                user-select: none;
+                background: rgb(2,0,36);
+                background: rgb(131,58,180);
+                background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+                animation: gradient 15s ease infinite;
+            }
+            @keyframes gradient {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+            .container2{
+                border-radius: 8px;
+                box-shadow: 12px 12px 20px #00000020,
+                            12px 12px 20px #00000020;
+            }
+            .container3{
+                border-radius: 8px;
+                box-shadow: 12px 12px 20px #00000020,
+                            12px 12px 20px #00000020;
+            }
+            .alarmclock{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: 1000;
+                letter-spacing: 0.25em;
+                color: w;
+                font-size: 30px;
+                text-align: center;
+                background-position: auto;
+                border-radius: 6px;
+    }
+            .Clock{
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 1000;
+                letter-spacing: 0.25em;
+                padding: 10px;
+                font-size: 80px;
+                text-align: center;
+                background-position: auto;
+                border-radius: 6px;
+                color: w;
+            }
+            .Date{
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 1000;
+                letter-spacing: 0.25em;
+                font-size: 35px;
+                text-align: center;
+                background-position: auto;
+                border-radius: 6px;
+                color: white;
+            }
+            .members{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            letter-spacing: 0.25em;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container1">
+            <div class="alarmclock">ALARM CLOCK</strong>
+        </div>
+        <div class="members">
+                <h3>JEWEL B. TIMPUG</h3>
+                <h3>JOHN CARLO GONZALES</h3>
+                <h3>JAMESON L. ABAPO</h3>
+                <h3>JUN-JUN D. GUIAO, </h3>
+                <h3>JOHN ABRAHAM S. TUPAS</h3>
+        </div>
+    <div class="container2">
+        <div class="Clock" >
+            <div id = "Clock" ></div>
+        </div>
+    </div>
+    <div class="container3">
+        <div class="Date" >
+            <div id = "Date" ></div>
+        </div>
+    </div>
+        <script type="text/javascript">
+            function updateTime(){
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                var meridian = "AM";
+                if(hour >= 12){
+                    meridian = "PM";
+                    if(hour > 12)
+                        hour = hour - 12;
+                } else {
+                    if(hour == 0)
+                        hour = hour + 12;
+                }
+                if(hour < 10)
+                    hour = "0" + hour;
+                if(minute < 10)
+                    minute = "0" + minute;
+                if(second < 10)
+                    second = "0" + second;
+                document.getElementById("Clock").innerHTML = hour + " : " + minute + " : " + second + " " + meridian;
+                setTimeout(updateTime , 1000);
+            }
+            updateTime();
+            </script>
+            <script type="text/javascript">
+                var date = new Date();
+                var year = date.getFullYear();
+                var mon = date.getMonth();
+                var today = date.getDate();
+                mon += 1;
+                var month = "None";
+                switch(mon){
+                    case 1 : month = "January" ;
+                    break;
+                    case 2 : month = "February" ;
+                    break;
+                    case 3 : month = "March" ;
+                    break;
+                    case 4 : month = "April" ;
+                    break;
+                    case 5 : month = "May" ;
+                    break;
+                    case 6 : month = "June" ;
+                    break;
+                    case 7 : month = "July" ;
+                    break;
+                    case 8 : month = "August" ;
+                    break;
+                    case 9 : month = "September" ;
+                    break;
+                    case 10 : month = "October" ;
+                    break;
+                    case 11 : month = "November" ;
+                    break;
+                    case 12 : month = "December" ;
+                    break;
+                }
+                var day = "None";
+                var curr = date.getDay();
+                if(curr == 1){
+                    day = "Monday";
+                } else if(curr==2){
+                    day = "Tuesday";
+                } else if(curr==3){
+                    day = "Wednesday";
+                } else if(curr==4){
+                    day = "Thursday";
+                } else if(curr==5){
+                    day = "Friday";
+                } else if(curr==6){
+                    day = "Saturday";
+                } else {
+                    day = "Sunday";
+                }
+                document.getElementById("Date").innerHTML = today + " " + month + " " + year + " : " + day;
+                setTimeout(updateTime , 1000);
+            </script>
+    </body>
+</html>
